@@ -1241,9 +1241,10 @@ static uint32_t numicro_fmc_cmd(struct target *target, uint32_t cmd, uint32_t ad
 	timeout = 100;
 	for (;;) {
 		retval = target_read_u32(target, NUMICRO_FLASH_ISPTRG, &status);
-		if (retval != ERROR_OK)
+		if (retval != ERROR_OK) {
 			return retval;
-			LOG_DEBUG("status: 0x%" PRIx32 "", status);
+		}
+		LOG_DEBUG("status: 0x%" PRIx32 "", status);
 		if ((status & (ISPTRG_ISPGO)) == 0)
 			break;
 		if (timeout-- <= 0) {
@@ -1510,9 +1511,10 @@ static int numicro_erase(struct flash_bank *bank, unsigned int first,
 		timeout = 100;
 		for (;;) {
 			retval = target_read_u32(target, NUMICRO_FLASH_ISPTRG, &status);
-			if (retval != ERROR_OK)
+			if (retval != ERROR_OK) {
 				return retval;
-				LOG_DEBUG("status: 0x%" PRIx32 "", status);
+			}
+			LOG_DEBUG("status: 0x%" PRIx32 "", status);
 			if (status == 0)
 				break;
 			if (timeout-- <= 0) {
@@ -1599,9 +1601,10 @@ static int numicro_write(struct flash_bank *bank, const uint8_t *buffer,
 			timeout = 100;
 			for (;;) {
 				retval = target_read_u32(target, NUMICRO_FLASH_ISPTRG, &status);
-				if (retval != ERROR_OK)
+				if (retval != ERROR_OK) {
 					return retval;
-					LOG_DEBUG("status: 0x%" PRIx32 "", status);
+				}
+				LOG_DEBUG("status: 0x%" PRIx32 "", status);
 				if (status == 0)
 					break;
 				if (timeout-- <= 0) {

@@ -37,9 +37,9 @@ int arm9tdmi_clock_data_in(struct arm_jtag *jtag_info, uint32_t *in);
 int arm9tdmi_clock_data_in_endianness(struct arm_jtag *jtag_info,
 		void *in, int size, int be);
 void arm9tdmi_read_core_regs(struct target *target,
-		uint32_t mask, uint32_t *core_regs[16]);
+		uint32_t mask, uint32_t **core_regs);
 void arm9tdmi_write_core_regs(struct target *target,
-		uint32_t mask, uint32_t core_regs[16]);
+		uint32_t mask, uint32_t *core_regs);
 
 int arm9tdmi_examine_debug_reason(struct target *target);
 

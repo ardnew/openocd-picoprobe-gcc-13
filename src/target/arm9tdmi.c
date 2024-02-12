@@ -361,7 +361,7 @@ static void arm9tdmi_change_to_arm(struct target *target,
 }
 
 void arm9tdmi_read_core_regs(struct target *target,
-		uint32_t mask, uint32_t *core_regs[16])
+		uint32_t mask, uint32_t **core_regs)
 {
 	int i;
 	struct arm7_9_common *arm7_9 = target_to_arm7_9(target);
@@ -503,7 +503,7 @@ static void arm9tdmi_write_xpsr_im8(struct target *target,
 }
 
 void arm9tdmi_write_core_regs(struct target *target,
-		uint32_t mask, uint32_t core_regs[16])
+		uint32_t mask, uint32_t *core_regs)
 {
 	int i;
 	struct arm7_9_common *arm7_9 = target_to_arm7_9(target);
